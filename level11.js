@@ -1,11 +1,11 @@
 function drawMap() {
   createCanvas(800, 600);
   background(220);
-  
-  rect(50,50,269,269);
+
+  rect(50, 50, 269, 269);
 }
 
-function setup(){
+function setup() {
   robot = new Robot(50, 50, 0, 60);
   /*
   GOAL: Find the right size of square to draw
@@ -28,13 +28,11 @@ function setup(){
       the input to your function.
   
   */
-  
+
   // Your code here:
-    
+
   // given for loop
-  for (var i = 0 ; i < 4 ; i++) {
+  for (var i = 0; i < 4; i++) {
     // This will run code inside the braces {} four times!
   }
-  
 }
-

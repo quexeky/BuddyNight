@@ -1,22 +1,22 @@
 function drawMap() {
   createCanvas(600, 600);
   rectMode(CENTER);
-  
+
   noStroke();
-  
-  fill(color('purple'));  
-  rect(width/2, height/2, width, height);
 
-  fill(color('white'));  
-  circle(width/2, height/2, width-20, height-20);
+  fill(color("purple"));
+  rect(width / 2, height / 2, width, height);
 
-  fill(color('green'));
-  rect(targetX, targetY, 70,70);  
+  fill(color("white"));
+  circle(width / 2, height / 2, width - 20, height - 20);
+
+  fill(color("green"));
+  rect(targetX, targetY, 70, 70);
 }
 
-function setup(){
-  targetX = random(70, 600-70);
-  targetY = random(70, 600-70);
+function setup() {
+  targetX = random(70, 600 - 70);
+  targetY = random(70, 600 - 70);
   robot = new Robot(300, 300, 0, 60);
 
   // Goal: Drive the robot into the green square
@@ -57,7 +57,7 @@ function setup(){
   */
 
   while (!robot.detectColour(color("green")) && robot.hasBattery()) {
-    robot.move(1,0);
+    robot.move(1, 0);
   }
 
   /**
@@ -72,7 +72,7 @@ function setup(){
     }
   }
   */
-  
+
   /**
   // Solution
   // radial scan
@@ -84,5 +84,5 @@ function setup(){
       robot.move(1,0);
     }
   }
-  */ 
+  */
 }

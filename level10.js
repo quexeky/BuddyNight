@@ -2,10 +2,10 @@ function drawMap() {
   createCanvas(800, 600);
 }
 
-function setup(){
+function setup() {
   robot = new Robot(100, 100, 0, 50);
   // Goal: Learn How to Use Functions in JavaScript
-  
+
   /*
   10.1:
     Goal: Draw a square
@@ -22,9 +22,9 @@ function setup(){
     Type out a new function that draws a new shape.
   Bonus Challenge: Try and draw your name with the robot
   */
-  
+
   // Your code here:
-  
+
   /**
   s1(robot);
   robot.move(50,0);
@@ -44,6 +44,4 @@ function s2(robot) {
   robot.move(25,0);
   robot.move(16,10);
 }
-*/  
-
-
+*/

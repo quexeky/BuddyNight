@@ -1,23 +1,23 @@
 function drawMap() {
   createCanvas(500, 400);
-  fill(color('blue'));
+  fill(color("blue"));
   rectMode(CENTER);
   stroke(color(0, 0, 255));
   strokeWeight(4);
-  
-  line(width/2,0,width/2,280);
-  
+
+  line(width / 2, 0, width / 2, 280);
+
   noFill();
   rectMode(CORNER);
-  stroke(color('blue'));
+  stroke(color("blue"));
   strokeWeight(5);
-  rect(0,0,width, height);
-  
-  fill(color('green'));
+  rect(0, 0, width, height);
+
+  fill(color("green"));
   noStroke();
-  rect(350, 60, 70,70); 
+  rect(350, 60, 70, 70);
 }
-function setup(){
+function setup() {
   robot = new Robot(150, 60, 0, 60);
 
   // Goal: Drive the robot into the green square
@@ -40,7 +40,7 @@ function setup(){
          robot.move(10,0.5); // Then turn right slightly
   */
 
-  /*
+  /**
   // Solution
   robot.move(10,15);
   robot.move(140,0);

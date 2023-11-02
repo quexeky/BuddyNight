@@ -3,21 +3,20 @@ function drawMap() {
 
   rectMode(CORNER);
   noFill();
-  stroke(color('blue'));
+  stroke(color("blue"));
   strokeWeight(4);
   rect(0, 100, 250, height);
-  
-  fill(color('purple'));
-  stroke(color('blue'));
+
+  fill(color("purple"));
+  stroke(color("blue"));
   strokeWeight(5);
   noFill();
   rect(0, 0, width, height);
-  
-  
+
   rectMode(CENTER);
-  fill(color('green'));
+  fill(color("green"));
   noStroke();
-  rect(330, 350, 70,70); 
+  rect(330, 350, 70, 70);
 }
 
 function setup() {
@@ -25,7 +24,7 @@ function setup() {
 
   // Goal: Drive the robot into the green square
   //       but avoid the blue lines!
-  
+
   /*
   To tell the robot to drive forward we use
     E.g. robot.move(50,0); // drives a distance of 50
@@ -43,7 +42,7 @@ function setup() {
          robot.move(10,0.5); // Then turn right slightly
   */
 
-  robot.move(10,0);
+  robot.move(10, 0);
 
   /**
   // Solution

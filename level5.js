@@ -1,15 +1,14 @@
-
 function drawMap() {
-  createCanvas(500,500);
+  createCanvas(500, 500);
   noFill();
   rectMode(CORNER);
-  stroke(color('blue'));
+  stroke(color("blue"));
   strokeWeight(5);
-  rect(0,0,width, height);
+  rect(0, 0, width, height);
 }
 
-function setup(){
-  robot = new Robot(250,250, 0, 50);
+function setup() {
+  robot = new Robot(250, 250, 0, 50);
 
   // Goal: Draw something interesting!
 
@@ -25,8 +24,8 @@ function setup(){
   */
 
   // Currently draws a square
-  while(robot.hasBattery()) {
-    robot.move(5,31.5);
-    robot.move(80,0);
+  while (robot.hasBattery()) {
+    robot.move(5, 31.5);
+    robot.move(80, 0);
   }
 }

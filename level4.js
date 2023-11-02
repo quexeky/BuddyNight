@@ -1,21 +1,20 @@
-
 function drawMap() {
   createCanvas(840, 1063);
   imageMode(CORNER);
   background(map_lvl4);
 
   rectMode(CENTER);
-  fill(color('orange'));
+  fill(color("orange"));
   noStroke();
-  rect(400, 530, 75,75);
- 
+  rect(400, 530, 75, 75);
+
   rectMode(CENTER);
-  fill(color('green'));
+  fill(color("green"));
   noStroke();
-  rect(720, 980, 70,75); 
+  rect(720, 980, 70, 75);
 }
 
-function setup(){
+function setup() {
   robot = new Robot(50, 98, 0, 50);
 
   // Goal: Drive the robot into the green square
@@ -27,7 +26,7 @@ function setup(){
   Hint: robot.move(-50,0); will tell the robot
         to drive backwards
   */
-  
+
   /**
   // Solution
   robot.move(325,0);
