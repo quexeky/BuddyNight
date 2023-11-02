@@ -24,15 +24,14 @@ function setup() {
   */
 
   // Your code here:
-
-  /**
-  s1(robot);
-  robot.move(50,0);
-  s1(robot);
-  */
 }
 
 /**
+  s1(robot);
+  robot.move(50,0);
+  s1(robot);
+}
+
 function s1(robot) {
   s2(robot);
   s2(robot);
