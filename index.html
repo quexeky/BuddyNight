@@ -1,42 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="keywords" content="FRC Team 3132 bring a buddy night software activity" />
-	<meta name="description" content="A fun way to design and build robots using p5.js" />
-	<title>Team 3132 Bring a Buddy Software Activity</title>
-	<link rel='stylesheet' href='styles.css' />
-</head>
-<body>
-	<section class="flex">
-		<div id="RCheader">
-			<H1>3132 Bring a Buddy Software Activity</H1>
-			<p>Welcome! This activity helps you learn how to control robots online.
-			<p>To load each level click on it's button then paste (ctrl + v) into the editor.
-            <br>You should only ever need to edit the code inside the setup() function.
-			<br>Unfortunately there is no way to save your code so you should open a new tab when starting the next level.</p>
-		</div>
-		<div id="RCpaste" class="flex">
-			<button onclick="textToClipboard(1)" class="RCbutton" id="RCbutton1" type="button">Level 1</button>
-			<button onclick="textToClipboard(2)" class="RCbutton" id="RCbutton2" type="button">Level 2</button>
-			<button onclick="textToClipboard(3)" class="RCbutton" id="RCbutton3" type="button">Level 3</button>
-			<button onclick="textToClipboard(4)" class="RCbutton" id="RCbutton4" type="button">Level 4</button>
-			<button onclick="textToClipboard(5)" class="RCbutton" id="RCbutton5" type="button">Level 5</button>
-			<button onclick="textToClipboard(6)" class="RCbutton" id="RCbutton6" type="button">Level 6</button>
-			<button onclick="textToClipboard(7)" class="RCbutton" id="RCbutton7" type="button">Level 7</button>
-			<button onclick="textToClipboard(8)" class="RCbutton" id="RCbutton8" type="button">Level 8</button>
-			<button onclick="textToClipboard(9)" class="RCbutton" id="RCbutton9" type="button">Level 9</button>
-			<button onclick="textToClipboard(10)" class="RCbutton" id="RCbutton10" type="button">Level 10</button>
-			<button onclick="textToClipboard(11)" class="RCbutton" id="RCbutton11" type="button">Level 11</button>
-			<button onclick="textToClipboard(12)" class="RCbutton" id="RCbutton12" type="button">Level 12</button>
-			<button onclick="textToClipboard(13)" class="RCbutton" id="RCbutton13" type="button">Level 13</button>
-		</div>
-	</section>
-	<script start=1 end=13 answers="false" src="index.js">
-	</script>
-		<iframe id="p5jsFrame" name="p5jsFrame" style="width:100%;height:800px" src="https://editor.p5js.org/" onload="p5jsLoaded();">
-			<p>Your browser does not support iframes.</p>
-		</iframe>
-	</body>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="FRC Team 3132 bring a buddy night software activity"
+    />
+    <meta
+      name="description"
+      content="A fun way to design and build robots using p5.js"
+    />
+    <title>Team 3132 Bring a Buddy Software Activity</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="tab">
+      <div class="tab-buttons">
+        <button class="tablinks" onclick="openTab(event, 'Instructions')">
+          Instructions
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'Lvl_1')">
+          Level 1
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'Lvl_2')">
+          Level 2
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'Lvl_3')">
+          Level 3
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'Lvl_4')">
+          Level 4
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'Lvl_5')">
+          Level 5
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'Lvl_6')">
+          Level 6
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'Lvl_7')">
+          Level 7
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'Lvl_8')">
+          Level 8
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'Lvl_9')">
+          Level 9
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'Lvl_10')">
+          Level 10
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'Lvl_11')">
+          Level 11
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'Lvl_12')">
+          Level 12
+        </button>
+        <button class="tablinks" onclick="openTab(event, 'Lvl_13')">
+          Level 13
+        </button>
+      </div>
+      <div class="tab-header">
+        <p>3132 Bring a Buddy Software Activity</p>
+      </div>
+    </div>
+    <div id="Instructions" class="tabcontent">
+      <div class="instruct-box">
+        <h1 class="instruct-welcome-text">
+          Welcome to the 3132 Bring a Buddy Software Activity!
+        </h1>
+      </div>
+      <div class="instruct-text">
+        To complete this activity, click each level tab on the top bar.
+        <br /><br />
+        Please follow the instructions within each code! <br /><br />
+        Make sure to ask a mentor if you need help and have fun!!
+      </div>
+    </div>
+    <div id="Lvl_1" class="tabcontent">
+      <script
+        type="text/p5"
+        src="exercise_code/level1.js"
+        data-height="800"
+        data-preview-width="700"
+      ></script>
+    </div>
+    <div id="Lvl_2" class="tabcontent">
+      <script
+        type="text/p5"
+        src="exercise_code/level2.js"
+        data-height="800"
+        data-preview-width="700"
+      ></script>
+    </div>
+    <div id="Lvl_3" class="tabcontent">
+      <script
+        type="text/p5"
+        src="exercise_code/level3.js"
+        data-height="800"
+        data-preview-width="700"
+      ></script>
+    </div>
+    <div id="Lvl_4" class="tabcontent">
+      <script
+        type="text/p5"
+        src="exercise_code/level4.js"
+        data-height="800"
+        data-preview-width="700"
+      ></script>
+    </div>
+    <div id="Lvl_5" class="tabcontent">
+      <script
+        type="text/p5"
+        src="exercise_code/level5.js"
+        data-height="800"
+        data-preview-width="700"
+      ></script>
+    </div>
+    <div id="Lvl_6" class="tabcontent">
+      <script
+        type="text/p5"
+        src="exercise_code/level6.js"
+        data-height="800"
+        data-preview-width="700"
+      ></script>
+    </div>
+    <div id="Lvl_7" class="tabcontent">
+      <script
+        type="text/p5"
+        src="exercise_code/level7.js"
+        data-height="800"
+        data-preview-width="700"
+      ></script>
+    </div>
+    <div id="Lvl_8" class="tabcontent">
+      <script
+        type="text/p5"
+        src="exercise_code/level8.js"
+        data-height="800"
+        data-preview-width="700"
+      ></script>
+    </div>
+    <div id="Lvl_9" class="tabcontent">
+      <script
+        type="text/p5"
+        src="exercise_code/level9.js"
+        data-height="800"
+        data-preview-width="700"
+      ></script>
+    </div>
+    <div id="Lvl_10" class="tabcontent">
+      <script
+        type="text/p5"
+        src="exercise_code/level10.js"
+        data-height="800"
+        data-preview-width="700"
+      ></script>
+    </div>
+    <div id="Lvl_11" class="tabcontent">
+      <script
+        type="text/p5"
+        src="exercise_code/level11.js"
+        data-height="800"
+        data-preview-width="700"
+      ></script>
+    </div>
+    <div id="Lvl_12" class="tabcontent">
+      <script
+        type="text/p5"
+        src="exercise_code/level12.js"
+        data-height="800"
+        data-preview-width="700"
+      ></script>
+    </div>
+    <div id="Lvl_13" class="tabcontent">
+      <script
+        type="text/p5"
+        src="exercise_code/level13.js"
+        data-height="800"
+        data-preview-width="700"
+      ></script>
+    </div>
+    <script src="//toolness.github.io/p5.js-widget/p5-widget.js"></script>
+    <script start="1" end="13" answers="false" src="index.js"></script>
+  </body>
 </html>
