@@ -78,15 +78,17 @@ body {
   background-repeat: no-repeat; /* Prevent image repetition */
   background-position: top;
   background-size: 50%;
-  width:100%;
-  height: 100%;
   justify-content: center;
+  background-position: center;
 }
 
 .instruct-box {
-  padding: 20px;
-  border: 2px solid black;
-  padding: 5px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .instruct-text {
