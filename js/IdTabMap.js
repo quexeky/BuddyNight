@@ -24,4 +24,6 @@ window.tabScriptMap = {
   tab11: tabInfo.new("exercise_preloads/level11.js"),
   tab12: tabInfo.new("exercise_preloads/level12.js"),
   tab13: tabInfo.new("exercise_preloads/level13.js"),
+  bonus1: tabInfo.new("exercise_preloads/bonus1.js"),
+  bonus2: tabInfo.new("exercise_preloads/bonus2.js"),
 };
