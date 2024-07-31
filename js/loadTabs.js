@@ -10,6 +10,12 @@ function openTab(evt, tabId) {
 
   // Not an active tab, so activate it & show or create the widget
   activateTab(evt);
+
+  if (tabId === "Instructions") {
+    showContent(tabId);
+    return;
+  }
+
   if (!window.tabScriptMap[tabId].isLoaded) {
     // Inject the p5.js widget script code into the DOM
     loadWidget(window.tabScriptMap[tabId].src, tabId);
