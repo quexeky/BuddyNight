@@ -1,5 +1,4 @@
 function openTab(evt, tabId) {
-  const closeDelay = 100;
   const tab_content = document.getElementsByClassName("tabcontent");
   const tab_links = document.getElementsByClassName("tablinks");
 
