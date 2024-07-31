@@ -14,30 +14,44 @@ function Robot(x, y, a, s) {
   this.history = [];
   this.path = [];
   this.pathDir = [];
-  
+
   this.hasBattery = function hasBattery() {
     return this.path.length < MAX_PATH_LENGTH;
-  }
+  };
 
   this.detectColour = function detectColour(c) {
-    const at = get(x + cos(a) * COLOUR_SENSOR_DISTANCE, y + sin(a) * COLOUR_SENSOR_DISTANCE);
+    const at = get(
+      x + cos(a) * COLOUR_SENSOR_DISTANCE,
+      y + sin(a) * COLOUR_SENSOR_DISTANCE
+    );
     //print(at, c.toString());
-    return at[0] == red(c) && at[1] == green(c) && at[2] == blue(c) && at[3] == alpha(c);
-  }
-  
+    return (
+      at[0] == red(c) &&
+      at[1] == green(c) &&
+      at[2] == blue(c) &&
+      at[3] == alpha(c)
+    );
+  };
+
   this.move = function move(dist, turnRate) {
     for (var i = 1; i <= abs(dist); i++) {
-      a += turnRate/100;
+      a += turnRate / 100;
       x = x + cos(a) * 2 * Math.sign(dist);
       y = y + sin(a) * 2 * Math.sign(dist);
       this.path.push(createVector(x, y));
       this.pathDir.push(Math.sign(dist));
-      if (x >= width || x <= 0 || y >= height || y <= 0 || this.path.length > MAX_PATH_LENGTH) {
+      if (
+        x >= width ||
+        x <= 0 ||
+        y >= height ||
+        y <= 0 ||
+        this.path.length > MAX_PATH_LENGTH
+      ) {
         return false;
       }
     }
     return true;
-  }
+  };
 
   this.render = function render(time) {
     if (time < this.path.length) {
@@ -45,7 +59,7 @@ function Robot(x, y, a, s) {
       var p = this.path[time];
       noStroke();
       fill(255, 0, 0, 255);
-      ellipse(p.x, p.y, this.size/3, this.size/3);
+      ellipse(p.x, p.y, this.size / 3, this.size / 3);
 
       //trail
       for (var i = 0; i < this.history.length; i = i + 2) {
@@ -60,15 +74,15 @@ function Robot(x, y, a, s) {
       if (this.history.length > TRAIL_LENGTH) {
         this.history.shift();
       }
-      
+
       translate(p.x, p.y);
-      var q = this.history[this.history.length-2];
+      var q = this.history[this.history.length - 2];
       rotate(p.sub(q).mult(this.pathDir[time]).heading());
       imageMode(CENTER);
       image(img, 0, 0, this.size, this.size);
     }
-  }
-  this.move(2,0); // make sure the robot is drawn
+  };
+  this.move(2, 0); // make sure the robot is drawn
 }
 
 function preload() {
@@ -86,43 +100,40 @@ function draw() {
   }
 }
 function drawMap() {
-  createCanvas(600, 600);
-  rectMode(CENTER);
+  createCanvas(800, 600);
+  background(220);
 
-  noStroke();
-
-  fill(color("purple"));
-  rect(width / 2, height / 2, width, height);
-
-  fill(color("white"));
-  rect(width / 2, height / 2, width - 20, height - 20);
-
-  fill(color("green"));
-  rect(targetX, targetY, 70, 70);
+  rect(50, 50, 269, 269);
 }
 
-const LEFT = true;
-const RIGHT = false;
 function setup() {
-  targetX = random(70, 600 - 70);
-  targetY = random(70, 600 - 70);
   robot = new Robot(50, 50, 0, 60);
-
-  // Goal: Drive the robot into the green square
-  //       (It spawns in a random position!)
-
   /*
-  This while loop will tell the robot to repeat whatever
-  is inside until either it detects the green square or
-  it runs out of battery
-
-  Make sure you don't run the code if you have nothing inside
-  the while loop
+  GOAL: Find the right size of square to draw
+  by changing the drive distance until the robot's
+  square matches the white 'goal' square
+  on the screen.
+  
+  To complete the task:
+    - Copy in your square drawing function
+      from level 10.
+    - Reduce the size of the function by
+      using the given loop instead of 
+      repeating the same code four times.
+    - Switch to a for loop so you can loop
+      exactly four times.
+    - Modify the function to take a parameter
+      for distance that can be passed into it.
+    - Match the size of the robot's square with
+      the white square on the screen by changing
+      the input to your function.
+  
   */
 
-  while (!robot.detectColour(color("green")) && robot.hasBattery()) {
-    robot.move(1, 0);
-  }
+  // Your code here:
 
-  
+  // given for loop
+  for (var i = 0; i < 4; i++) {
+    // This will run code inside the braces {} four times!
+  }
 }

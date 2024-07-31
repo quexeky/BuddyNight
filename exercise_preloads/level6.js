@@ -14,30 +14,44 @@ function Robot(x, y, a, s) {
   this.history = [];
   this.path = [];
   this.pathDir = [];
-  
+
   this.hasBattery = function hasBattery() {
     return this.path.length < MAX_PATH_LENGTH;
-  }
+  };
 
   this.detectColour = function detectColour(c) {
-    const at = get(x + cos(a) * COLOUR_SENSOR_DISTANCE, y + sin(a) * COLOUR_SENSOR_DISTANCE);
+    const at = get(
+      x + cos(a) * COLOUR_SENSOR_DISTANCE,
+      y + sin(a) * COLOUR_SENSOR_DISTANCE
+    );
     //print(at, c.toString());
-    return at[0] == red(c) && at[1] == green(c) && at[2] == blue(c) && at[3] == alpha(c);
-  }
-  
+    return (
+      at[0] == red(c) &&
+      at[1] == green(c) &&
+      at[2] == blue(c) &&
+      at[3] == alpha(c)
+    );
+  };
+
   this.move = function move(dist, turnRate) {
     for (var i = 1; i <= abs(dist); i++) {
-      a += turnRate/100;
+      a += turnRate / 100;
       x = x + cos(a) * 2 * Math.sign(dist);
       y = y + sin(a) * 2 * Math.sign(dist);
       this.path.push(createVector(x, y));
       this.pathDir.push(Math.sign(dist));
-      if (x >= width || x <= 0 || y >= height || y <= 0 || this.path.length > MAX_PATH_LENGTH) {
+      if (
+        x >= width ||
+        x <= 0 ||
+        y >= height ||
+        y <= 0 ||
+        this.path.length > MAX_PATH_LENGTH
+      ) {
         return false;
       }
     }
     return true;
-  }
+  };
 
   this.render = function render(time) {
     if (time < this.path.length) {
@@ -45,7 +59,7 @@ function Robot(x, y, a, s) {
       var p = this.path[time];
       noStroke();
       fill(255, 0, 0, 255);
-      ellipse(p.x, p.y, this.size/3, this.size/3);
+      ellipse(p.x, p.y, this.size / 3, this.size / 3);
 
       //trail
       for (var i = 0; i < this.history.length; i = i + 2) {
@@ -60,15 +74,15 @@ function Robot(x, y, a, s) {
       if (this.history.length > TRAIL_LENGTH) {
         this.history.shift();
       }
-      
+
       translate(p.x, p.y);
-      var q = this.history[this.history.length-2];
+      var q = this.history[this.history.length - 2];
       rotate(p.sub(q).mult(this.pathDir[time]).heading());
       imageMode(CENTER);
       image(img, 0, 0, this.size, this.size);
     }
-  }
-  this.move(2,0); // make sure the robot is drawn
+  };
+  this.move(2, 0); // make sure the robot is drawn
 }
 
 function preload() {
@@ -85,46 +99,63 @@ function draw() {
     redraw();
   }
 }
-let mapChoice = Math.floor(Math.random() * 2);
 function drawMap() {
   createCanvas(600, 600);
+
+  noFill();
+  rectMode(CORNER);
+  stroke(color("blue"));
+  strokeWeight(5);
+  rect(0, 0, width, height);
+
   rectMode(CENTER);
 
+  fill(color("purple"));
   noStroke();
+  rect(202, 580 - l, 400, 40);
+  rect(398, 20 + r, 400, 40);
 
-  fill(color("white"));
-  rect(width / 2, height / 2, width, height);
+  fill(color("blue"));
+  stroke(color(0, 0, 255));
+  strokeWeight(4);
 
-  if (mapChoice === 0) {
-    fill(color("purple"));
-    rect(300, 100, 50, 50);
+  line(4, 600 - l, 400, 600 - l);
+  line(400, 150 + r, 400, 600 - l);
 
-    fill(color("green"));
-    rect(70, 100, 50, 50);
-  } else {
-    fill(color("red"));
-    rect(300, 100, 50, 50);
+  line(200, 0, 200, 450 - l);
+  line(200, 0 + r, 596, 0 + r);
 
-    fill(color("green"));
-    rect(530, 100, 50, 50);
-  }
+  fill(color("green"));
+  noStroke();
+  rect(500, 550, 70, 70);
 }
 
 function setup() {
-  robot = new Robot(300, 500, 4.7, 60);
+  l = random(0, 200);
+  r = random(0, 200);
+  robot = new Robot(100, 60, Math.PI / 2, 60);
 
   // Goal: Drive the robot into the green square
+  //       but avoid the blue lines!
+  //       (The map changes every time!)
 
-  /*
-  You will need to detect the colour that appears in front of the robot
-  to make a decision. If the box is purple the robot will need to drive
-  left, if the box is red it will need to go right.
-  
-  You may need to use while(){...} loops, the robot.detectColour()
-  function and if(){...} statements.
-  Once you have it working, put your decision and turning code into
-  a function, this will be useful for the next level.
+  /* 
+  A reminder:
+  robot.move(100,5); will tell the robot to drive forward
+      while turning right. -5 would make it turn left
+    
+  To make the robot repeat a set of steps we can use a
+  while loop. Everything between the braces { } will be
+  repeated while the conition between the parentheses ( )
+  is true. In this case the robot will repeat whatever is
+  inside until it either detects a purple area or it
+  runs out of battery
+
+  Make sure you don't run the code if you have nothing inside
+  the while loop
   */
 
-  // Your code here:
+  while (!robot.detectColour(color("purple")) && robot.hasBattery()) {
+    robot.move(1, 0);
+  }
 }

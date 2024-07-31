@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- head.js loads all the js scripts to be ran in the head -->
+  <script src="head.js"></script>
   <head>
+    <link rel="shortcut icon" href="#" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -15,48 +18,50 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- body.js loads all the js scripts to be ran in the body -->
+    <script src="body.js"></script>
     <div class="tab">
       <div class="tab-buttons">
         <button class="tablinks" onclick="openTab(event, 'Instructions')">
           Instructions
         </button>
-        <button class="tablinks" onclick="openTab(event, 'Lvl_1')">
+        <button class="tablinks" onclick="openTab(event, 'tab1')">
           Level 1
         </button>
-        <button class="tablinks" onclick="openTab(event, 'Lvl_2')">
+        <button class="tablinks" onclick="openTab(event, 'tab2')">
           Level 2
         </button>
-        <button class="tablinks" onclick="openTab(event, 'Lvl_3')">
+        <button class="tablinks" onclick="openTab(event, 'tab3')">
           Level 3
         </button>
-        <button class="tablinks" onclick="openTab(event, 'Lvl_4')">
+        <button class="tablinks" onclick="openTab(event, 'tab4')">
           Level 4
         </button>
-        <button class="tablinks" onclick="openTab(event, 'Lvl_5')">
+        <button class="tablinks" onclick="openTab(event, 'tab5')">
           Level 5
         </button>
-        <button class="tablinks" onclick="openTab(event, 'Lvl_6')">
+        <button class="tablinks" onclick="openTab(event, 'tab6')">
           Level 6
         </button>
-        <button class="tablinks" onclick="openTab(event, 'Lvl_7')">
+        <button class="tablinks" onclick="openTab(event, 'tab7')">
           Level 7
         </button>
-        <button class="tablinks" onclick="openTab(event, 'Lvl_8')">
+        <button class="tablinks" onclick="openTab(event, 'tab8')">
           Level 8
         </button>
-        <button class="tablinks" onclick="openTab(event, 'Lvl_9')">
+        <button class="tablinks" onclick="openTab(event, 'tab9')">
           Level 9
         </button>
-        <button class="tablinks" onclick="openTab(event, 'Lvl_10')">
+        <button class="tablinks" onclick="openTab(event, 'tab10')">
           Level 10
         </button>
-        <button class="tablinks" onclick="openTab(event, 'Lvl_11')">
+        <button class="tablinks" onclick="openTab(event, 'tab11')">
           Level 11
         </button>
-        <button class="tablinks" onclick="openTab(event, 'Lvl_12')">
+        <button class="tablinks" onclick="openTab(event, 'tab12')">
           Level 12
         </button>
-        <button class="tablinks" onclick="openTab(event, 'Lvl_13')">
+        <button class="tablinks" onclick="openTab(event, 'tab13')">
           Level 13
         </button>
       </div>
@@ -69,119 +74,28 @@
         <h1 class="instruct-welcome-text">
           Welcome to the 3132 Bring a Buddy Software Activity!
         </h1>
-      <div class="instruct-text">
-        To complete this activity, click each level tab on the top bar.
-        <br /><br />
-        Please follow the instructions within each code! <br /><br />
-        Make sure to ask a mentor if you need help and have fun!!
+        <div class="instruct-text">
+          To complete this activity, click each level tab on the top bar.
+          <br /><br />
+          Please follow the instructions within each code! <br /><br />
+          Make sure to ask a mentor if you need help and have fun!!
+        </div>
       </div>
-      </div>
     </div>
-    <div id="Lvl_1" class="tabcontent">
-      <script src="//toolness.github.io/p5.js-widget/p5-widget.js"></script>
-      <script
-        type="text/p5"
-        src="exercise_code/level1.js"
-        data-height="800"
-        data-preview-width="700"
-      ></script>
-    </div>
-    <div id="Lvl_2" class="tabcontent">
-      <script
-        type="text/p5"
-        src="exercise_code/level2.js"
-        data-height="800"
-        data-preview-width="700"
-      ></script>
-    </div>
-    <div id="Lvl_3" class="tabcontent">
-      <script
-        type="text/p5"
-        src="exercise_code/level3.js"
-        data-height="800"
-        data-preview-width="700"
-      ></script>
-    </div>
-    <div id="Lvl_4" class="tabcontent">
-      <script
-        type="text/p5"
-        src="exercise_code/level4.js"
-        data-height="800"
-        data-preview-width="700"
-      ></script>
-    </div>
-    <div id="Lvl_5" class="tabcontent">
-      <script
-        type="text/p5"
-        src="exercise_code/level5.js"
-        data-height="800"
-        data-preview-width="700"
-      ></script>
-    </div>
-    <div id="Lvl_6" class="tabcontent">
-      <script
-        type="text/p5"
-        src="exercise_code/level6.js"
-        data-height="800"
-        data-preview-width="700"
-      ></script>
-    </div>
-    <div id="Lvl_7" class="tabcontent">
-      <script
-        type="text/p5"
-        src="exercise_code/level7.js"
-        data-height="800"
-        data-preview-width="700"
-      ></script>
-    </div>
-    <div id="Lvl_8" class="tabcontent">
-      <script
-        type="text/p5"
-        src="exercise_code/level8.js"
-        data-height="800"
-        data-preview-width="700"
-      ></script>
-    </div>
-    <div id="Lvl_9" class="tabcontent">
-      <script
-        type="text/p5"
-        src="exercise_code/level9.js"
-        data-height="800"
-        data-preview-width="700"
-      ></script>
-    </div>
-    <div id="Lvl_10" class="tabcontent">
-      <script
-        type="text/p5"
-        src="exercise_code/level10.js"
-        data-height="800"
-        data-preview-width="700"
-      ></script>
-    </div>
-    <div id="Lvl_11" class="tabcontent">
-      <script
-        type="text/p5"
-        src="exercise_code/level11.js"
-        data-height="800"
-        data-preview-width="700"
-      ></script>
-    </div>
-    <div id="Lvl_12" class="tabcontent">
-      <script
-        type="text/p5"
-        src="exercise_code/level12.js"
-        data-height="800"
-        data-preview-width="700"
-      ></script>
-    </div>
-    <div id="Lvl_13" class="tabcontent">
-      <script
-        type="text/p5"
-        src="exercise_code/level13.js"
-        data-height="800"
-        data-preview-width="700"
-      ></script>
-    </div>
+    <!-- Do not delete - we inject the widget script code into each div -->
+    <!-- Each id here must be the same as the tabId! -->
+    <div id="tab1" class="tabcontent"></div>
+    <div id="tab2" class="tabcontent"></div>
+    <div id="tab3" class="tabcontent"></div>
+    <div id="tab4" class="tabcontent"></div>
+    <div id="tab5" class="tabcontent"></div>
+    <div id="tab6" class="tabcontent"></div>
+    <div id="tab7" class="tabcontent"></div>
+    <div id="tab8" class="tabcontent"></div>
+    <div id="tab9" class="tabcontent"></div>
+    <div id="tab10" class="tabcontent"></div>
+    <div id="tab11" class="tabcontent"></div>
+    <div id="tab12" class="tabcontent"></div>
+    <div id="tab13" class="tabcontent"></div>
   </body>
-  <script start=1 end=13 answers="false" src="index.js"></script>
 </html>

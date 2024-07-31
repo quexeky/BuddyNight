@@ -14,30 +14,44 @@ function Robot(x, y, a, s) {
   this.history = [];
   this.path = [];
   this.pathDir = [];
-  
+
   this.hasBattery = function hasBattery() {
     return this.path.length < MAX_PATH_LENGTH;
-  }
+  };
 
   this.detectColour = function detectColour(c) {
-    const at = get(x + cos(a) * COLOUR_SENSOR_DISTANCE, y + sin(a) * COLOUR_SENSOR_DISTANCE);
+    const at = get(
+      x + cos(a) * COLOUR_SENSOR_DISTANCE,
+      y + sin(a) * COLOUR_SENSOR_DISTANCE
+    );
     //print(at, c.toString());
-    return at[0] == red(c) && at[1] == green(c) && at[2] == blue(c) && at[3] == alpha(c);
-  }
-  
+    return (
+      at[0] == red(c) &&
+      at[1] == green(c) &&
+      at[2] == blue(c) &&
+      at[3] == alpha(c)
+    );
+  };
+
   this.move = function move(dist, turnRate) {
     for (var i = 1; i <= abs(dist); i++) {
-      a += turnRate/100;
+      a += turnRate / 100;
       x = x + cos(a) * 2 * Math.sign(dist);
       y = y + sin(a) * 2 * Math.sign(dist);
       this.path.push(createVector(x, y));
       this.pathDir.push(Math.sign(dist));
-      if (x >= width || x <= 0 || y >= height || y <= 0 || this.path.length > MAX_PATH_LENGTH) {
+      if (
+        x >= width ||
+        x <= 0 ||
+        y >= height ||
+        y <= 0 ||
+        this.path.length > MAX_PATH_LENGTH
+      ) {
         return false;
       }
     }
     return true;
-  }
+  };
 
   this.render = function render(time) {
     if (time < this.path.length) {
@@ -45,7 +59,7 @@ function Robot(x, y, a, s) {
       var p = this.path[time];
       noStroke();
       fill(255, 0, 0, 255);
-      ellipse(p.x, p.y, this.size/3, this.size/3);
+      ellipse(p.x, p.y, this.size / 3, this.size / 3);
 
       //trail
       for (var i = 0; i < this.history.length; i = i + 2) {
@@ -60,15 +74,15 @@ function Robot(x, y, a, s) {
       if (this.history.length > TRAIL_LENGTH) {
         this.history.shift();
       }
-      
+
       translate(p.x, p.y);
-      var q = this.history[this.history.length-2];
+      var q = this.history[this.history.length - 2];
       rotate(p.sub(q).mult(this.pathDir[time]).heading());
       imageMode(CENTER);
       image(img, 0, 0, this.size, this.size);
     }
-  }
-  this.move(2,0); // make sure the robot is drawn
+  };
+  this.move(2, 0); // make sure the robot is drawn
 }
 
 function preload() {
@@ -86,28 +100,26 @@ function draw() {
   }
 }
 function drawMap() {
-  createCanvas(400, 400);
-
-  rectMode(CORNER);
-  noFill();
-  stroke(color("blue"));
+  createCanvas(500, 400);
+  fill(color("blue"));
+  rectMode(CENTER);
+  stroke(color(0, 0, 255));
   strokeWeight(4);
-  rect(0, 100, 250, height);
 
-  fill(color("purple"));
+  line(width / 2, 0, width / 2, 280);
+
+  noFill();
+  rectMode(CORNER);
   stroke(color("blue"));
   strokeWeight(5);
-  noFill();
   rect(0, 0, width, height);
 
-  rectMode(CENTER);
   fill(color("green"));
   noStroke();
-  rect(330, 350, 70, 70);
+  rect(350, 60, 70, 70);
 }
-
 function setup() {
-  robot = new Robot(30, 60, 0, 60);
+  robot = new Robot(150, 60, 0, 60);
 
   // Goal: Drive the robot into the green square
   //       but avoid the blue lines!
@@ -117,19 +129,15 @@ function setup() {
     E.g. robot.move(50,0); // drives a distance of 50
   Increasing the first number will make the robot drive further
    
-  To tell the robot to turn we change the second number
+  To tell the robot turn we change the second number
     E.g. robot.move(100,2); // turns right
     E.g. robot.move(100,-2); // turns left
-  A positive number will make the robot turn right whereas
-  a negative number will make the robot turn left
+  Using a negative number will tell the robot to turn
+  left instead using a positive
 
   Writing multiple move commands will tell the robot to do
-  them in one after the other, line by line.
+  them in sucession.
     E.g. robot.move(100,0); // Drive forward
          robot.move(10,0.5); // Then turn right slightly
   */
-
-  robot.move(10, 0);
-
-  
 }

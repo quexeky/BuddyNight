@@ -1,4 +1,3 @@
-
 const MAX_PATH_LENGTH = 10000;
 const TRAIL_LENGTH = 4000;
 const COLOUR_SENSOR_DISTANCE = 23;
@@ -15,30 +14,44 @@ function Robot(x, y, a, s) {
   this.history = [];
   this.path = [];
   this.pathDir = [];
-  
+
   this.hasBattery = function hasBattery() {
     return this.path.length < MAX_PATH_LENGTH;
-  }
+  };
 
   this.detectColour = function detectColour(c) {
-    const at = get(x + cos(a) * COLOUR_SENSOR_DISTANCE, y + sin(a) * COLOUR_SENSOR_DISTANCE);
+    const at = get(
+      x + cos(a) * COLOUR_SENSOR_DISTANCE,
+      y + sin(a) * COLOUR_SENSOR_DISTANCE
+    );
     //print(at, c.toString());
-    return at[0] == red(c) && at[1] == green(c) && at[2] == blue(c) && at[3] == alpha(c);
-  }
-  
+    return (
+      at[0] == red(c) &&
+      at[1] == green(c) &&
+      at[2] == blue(c) &&
+      at[3] == alpha(c)
+    );
+  };
+
   this.move = function move(dist, turnRate) {
     for (var i = 1; i <= abs(dist); i++) {
-      a += turnRate/100;
+      a += turnRate / 100;
       x = x + cos(a) * 2 * Math.sign(dist);
       y = y + sin(a) * 2 * Math.sign(dist);
       this.path.push(createVector(x, y));
       this.pathDir.push(Math.sign(dist));
-      if (x >= width || x <= 0 || y >= height || y <= 0 || this.path.length > MAX_PATH_LENGTH) {
+      if (
+        x >= width ||
+        x <= 0 ||
+        y >= height ||
+        y <= 0 ||
+        this.path.length > MAX_PATH_LENGTH
+      ) {
         return false;
       }
     }
     return true;
-  }
+  };
 
   this.render = function render(time) {
     if (time < this.path.length) {
@@ -46,7 +59,7 @@ function Robot(x, y, a, s) {
       var p = this.path[time];
       noStroke();
       fill(255, 0, 0, 255);
-      ellipse(p.x, p.y, this.size/3, this.size/3);
+      ellipse(p.x, p.y, this.size / 3, this.size / 3);
 
       //trail
       for (var i = 0; i < this.history.length; i = i + 2) {
@@ -61,15 +74,15 @@ function Robot(x, y, a, s) {
       if (this.history.length > TRAIL_LENGTH) {
         this.history.shift();
       }
-      
+
       translate(p.x, p.y);
-      var q = this.history[this.history.length-2];
+      var q = this.history[this.history.length - 2];
       rotate(p.sub(q).mult(this.pathDir[time]).heading());
       imageMode(CENTER);
       image(img, 0, 0, this.size, this.size);
     }
-  }
-  this.move(2,0); // make sure the robot is drawn
+  };
+  this.move(2, 0); // make sure the robot is drawn
 }
 
 function preload() {
@@ -87,33 +100,41 @@ function draw() {
   }
 }
 function drawMap() {
-  createCanvas(840, 1063);
-  imageMode(CORNER);
-  background(map_lvl4);
-
+  createCanvas(600, 600);
   rectMode(CENTER);
-  fill(color("orange"));
+
   noStroke();
-  rect(400, 530, 75, 75);
 
-  rectMode(CENTER);
+  fill(color("purple"));
+  rect(width / 2, height / 2, width, height);
+
+  fill(color("white"));
+  rect(width / 2, height / 2, width - 20, height - 20);
+
   fill(color("green"));
-  noStroke();
-  rect(720, 980, 70, 75);
+  rect(targetX, targetY, 70, 70);
 }
 
+const LEFT = true;
+const RIGHT = false;
 function setup() {
-  robot = new Robot(50, 98, 0, 50);
+  targetX = random(70, 600 - 70);
+  targetY = random(70, 600 - 70);
+  robot = new Robot(50, 50, 0, 60);
 
   // Goal: Drive the robot into the green square
-  //       but avoid the blue lines!
-  // Bonus Goal: Drive to the orange square then
-  //             the green square
+  //       (It spawns in a random position!)
 
   /*
-  Hint: robot.move(-50,0); will tell the robot
-        to drive backwards
+  This while loop will tell the robot to repeat whatever
+  is inside until either it detects the green square or
+  it runs out of battery
+
+  Make sure you don't run the code if you have nothing inside
+  the while loop
   */
 
-  
+  while (!robot.detectColour(color("green")) && robot.hasBattery()) {
+    robot.move(1, 0);
+  }
 }
